@@ -1,10 +1,12 @@
 <?php
+
 class ServerRequests
 {
+
     public function addProduct()
     {
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "http://localhost:3000/products");
+        curl_setopt($ch, CURLOPT_URL, $_ENV['API_URL']);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($_POST));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -19,7 +21,7 @@ class ServerRequests
     public function getProducts()
     {
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "http://localhost:3000/products");
+        curl_setopt($ch, CURLOPT_URL, $_ENV['API_URL']);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $response = curl_exec($ch);
         curl_close($ch);
@@ -32,7 +34,7 @@ class ServerRequests
     public function deleteProduct()
     {
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "http://localhost:3000/products");
+        curl_setopt($ch, CURLOPT_URL, $_ENV['API_URL']);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($_POST));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -47,7 +49,7 @@ class ServerRequests
     public function updateProduct()
     {
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "http://localhost:3000/products");
+        curl_setopt($ch, CURLOPT_URL, $_ENV['API_URL']);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($_POST));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

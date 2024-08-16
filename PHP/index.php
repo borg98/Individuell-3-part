@@ -1,10 +1,17 @@
 <?php
 require_once 'Models/ServerRequest.php';
 require_once 'Models/ExportFunction.php';
+require_once 'vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 
 $sr = new ServerRequests();
 $export = new ExportFunction();
 $products = $sr->getProducts();
+
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     switch ($_POST['postType']) {
@@ -27,7 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 
-
+    header('Location: index.php');
+    exit();
 }
 
 

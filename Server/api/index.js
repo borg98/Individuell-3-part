@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const products = require("./products");
+const products = require("../products");
 
 const app = express();
 app.use(express.static("public"));
